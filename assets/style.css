@@ -1,4 +1,8 @@
 #game{
-    display: grid;
-    grid-template-columns: 1fr 10fr;
+   display: grid;
+  grid-template-columns: repeat(9, 1fr); /* Three columns with equal width */
+  grid-gap: 10px; /* Gap between grid items */
 }
+
+  
+

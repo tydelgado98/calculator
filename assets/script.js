@@ -5,21 +5,30 @@ const numberBtn = document.querySelectorAll('#numbers .number-btn');
 
 addBtn.onclick = addStuff;
 let currValue = 0
-
+let clickCount = 0
 const buttonText = numberBtn.innerHTML
 
 
 numberBtn.forEach(button => {
-   button.addEventListener("click", () => {
-     currValue += parseInt(button.textContent)
-      console.log(currValue);
-      results.innerText = " "
-      results.innerText += currValue
+   button.addEventListener("click", handleClick )
    })
-})
 
-let x = numberBtn
-let y = numberBtn
+function handleClick() {
+      currValue += parseInt(this.textContent)
+       console.log(currValue);
+       
+       clickCount++;
+       results.innerText = " "
+       results.innerText += currValue
+
+
+       if (clickCount === 1) {
+         numberBtn.forEach(button => {
+            button.removeEventListener("click", handleClick)
+            addBtn.style.boxShadow = "5px 2px 5px red";
+         })
+       }
+}
 
 function addStuff () {
    
